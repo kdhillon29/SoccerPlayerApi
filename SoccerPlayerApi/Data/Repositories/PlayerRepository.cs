@@ -22,9 +22,19 @@ namespace SoccerPlayerApi.Data.Repositories
         public async Task<bool> DeletePlayer(int playerId)
         {
             var player = await _Context.Players.Where(x => x.PlayerId == playerId).FirstOrDefaultAsync();
-            _Context.Players.Remove(player);
-            await _Context.SaveChangesAsync();
-            return true;
+            try
+            {
+                _Context.Players.Remove(player);
+                var result = await _Context.SaveChangesAsync();
+                return result > 0;
+
+            } 
+            catch(Exception ex)
+            {  
+                
+                return false;
+
+            }
         }
 
         public async Task<int> EditPlayer(Player player)
