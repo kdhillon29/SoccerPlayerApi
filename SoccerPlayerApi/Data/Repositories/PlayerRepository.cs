@@ -2,22 +2,22 @@
 
 namespace SoccerPlayerApi.Data.Repositories
 {
-    
+
     public class PlayerRepository : IPlayerRepository
     {
         private readonly SoccerPlayersContext _Context;
 
         public PlayerRepository(SoccerPlayersContext dbContext)
         {
-           
+
             _Context = dbContext;
         }
 
         public async Task<int> CreatePlayer(Player player)
         {
             _Context.Players.Add(player);
-            await _Context.SaveChangesAsync();
-            return player.PlayerId;
+         return   await _Context.SaveChangesAsync();
+           // return player.PlayerId;
         }
 
         public async Task<bool> DeletePlayer(int playerId)
@@ -32,7 +32,7 @@ namespace SoccerPlayerApi.Data.Repositories
         {
             var playerToEdit = await _Context.Players.Where(x => x.PlayerId == player.PlayerId).FirstOrDefaultAsync();
             playerToEdit.PlayerName = player.PlayerName;
-            playerToEdit.JeresyNumber = player.JeresyNumber; 
+            playerToEdit.JeresyNumber = player.JeresyNumber;
             await _Context.SaveChangesAsync();
             return player.PlayerId;
         }
@@ -42,4 +42,12 @@ namespace SoccerPlayerApi.Data.Repositories
             var result = await _Context.Players.ToListAsync();
             return result;
         }
+
+        //public async Task<bool> Save()
+        //{
+        //    var result = await _Context.SaveChangesAsync();
+        //   return  result > 0 ? true : false;
+        //}
     }
+
+}

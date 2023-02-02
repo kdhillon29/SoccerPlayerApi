@@ -26,7 +26,7 @@ public partial class SoccerPlayersContext : DbContext
         modelBuilder.Entity<Player>(entity =>
         {
             entity
-                .HasNoKey()
+               
                 .ToTable("Player");
 
             entity.Property(e => e.JeresyNumber).HasColumnName("jeresyNumber");
