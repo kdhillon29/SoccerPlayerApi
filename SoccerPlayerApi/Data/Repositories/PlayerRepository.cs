@@ -16,8 +16,7 @@ namespace SoccerPlayerApi.Data.Repositories
         public async Task<int> CreatePlayer(Player player)
         {
             _Context.Players.Add(player);
-         return   await _Context.SaveChangesAsync();
-           // return player.PlayerId;
+            return await _Context.SaveChangesAsync();            
         }
 
         public async Task<bool> DeletePlayer(int playerId)
@@ -41,13 +40,6 @@ namespace SoccerPlayerApi.Data.Repositories
         {
             var result = await _Context.Players.ToListAsync();
             return result;
-        }
-
-        //public async Task<bool> Save()
-        //{
-        //    var result = await _Context.SaveChangesAsync();
-        //   return  result > 0 ? true : false;
-        //}
+        }     
     }
-
 }
