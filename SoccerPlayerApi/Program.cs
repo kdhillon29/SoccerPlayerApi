@@ -1,6 +1,6 @@
 
- global using SoccerPlayerApi.Model;
- global using Microsoft.EntityFrameworkCore;
+global using SoccerPlayerApi.Model;
+global using Microsoft.EntityFrameworkCore;
 using SoccerPlayerApi.Data.Repositories;
 using SoccerPlayerApi.Data.Intefaces;
 
@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<SoccerPlayersContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-   // options.UseSqlServer(builder.Configuration.GetConnectionString("prodConnection"));
+    // options.UseSqlServer(builder.Configuration.GetConnectionString("prodConnection"));
 });
 builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

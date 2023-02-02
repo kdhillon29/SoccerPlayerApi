@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-
-namespace SoccerPlayerApi.Model;
+﻿namespace SoccerPlayerApi.Model;
 
 public partial class SoccerPlayersContext : DbContext
 {
