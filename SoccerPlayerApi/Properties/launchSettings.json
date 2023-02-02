@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "SoccerPlayerApi": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:55245;http://localhost:55246"
+    }
+  }
+}
