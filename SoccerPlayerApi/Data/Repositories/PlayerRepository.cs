@@ -13,29 +13,25 @@ namespace SoccerPlayerApi.Data.Repositories
             _Context = dbContext;
         }
 
-        public async Task<int> CreatePlayer(Player player)
+        public async Task<Player> CreatePlayer(Player player)
         {
-            _Context.Players.Add(player);
-            return await _Context.SaveChangesAsync();            
+          var result =   _Context.Players.Add(player);
+             await _Context.SaveChangesAsync();
+            return result.Entity;
         }
 
         public async Task<bool> DeletePlayer(int playerId)
         {
+            
             var player = await _Context.Players.Where(x => x.PlayerId == playerId).FirstOrDefaultAsync();
-            try
-            {
-                _Context.Players.Remove(player);
-                var result = await _Context.SaveChangesAsync();
-                return result > 0;
 
-            } 
-            catch(Exception ex)
-            {  
-                
-                return false;
+            var result=  _Context.Players.Remove(player);
+                await _Context.SaveChangesAsync();
+            return result != null ? true : false;
 
-            }
+
         }
+        
 
         public async Task<int> EditPlayer(Player player)
         {
